@@ -1,0 +1,190 @@
+@import '../../../styles/consts.scss';
+
+.wrapper {
+    width: 1170px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.nav {
+    display: flex;
+    column-gap: 10px;
+    &__link {
+        text-decoration-line: none;
+    }
+    &__item {
+        width: 140px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $red;
+        border-radius: 5px;
+        &--active {
+            background-color: $red;
+            color: $white;
+        }
+    }
+}
+
+.title {
+    margin: 40px 0;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    color: $black;
+}
+
+.selects {
+    display: flex;
+    column-gap: 20px;
+    &__title {
+        font-weight: 500;
+        font-size: 26px;
+        line-height: 40px;
+        color: $black;
+    }
+    &-container {
+        position: relative;
+    }
+    &__input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border: 1px solid #DEDEE2;
+        border-radius: 10px;
+        padding: 0 10px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $black;
+        cursor: pointer;
+        &:focus {
+            outline: none;
+        }
+    }
+    &-list {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        background-color: $white;
+        width: 100%;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        padding: 8px 0;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: $black;
+        z-index: 10;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0.5s;
+        &--active {
+            visibility: visible;
+            opacity: 1;
+        }
+        &-values {
+            max-height: 240px;
+            overflow-y: scroll;
+            scrollbar-width: thin;
+            scrollbar-color: $greyLight $white;
+            &::-webkit-scrollbar {
+                width: 14px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: $greyLight;
+                border-radius: 10px;
+                border: 3px solid $white;
+            }
+        }
+        &__item {
+            padding: 10px;
+            transition: 0.5s;
+            cursor: pointer;
+            &:hover {
+                background-color: $greyLight;
+            }
+        }
+    }
+    &__item {
+        position: relative;
+        height: 40px;
+        padding: 0 10px;
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.news {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    column-gap: 30px;
+    &-item {
+        width: 570px;
+    }
+    &-header {
+        display: flex;
+        align-items: center;
+        padding: 0 30px;
+        height: 60px;
+        background-color: $greyLight;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        &__title {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 22px;
+            color: $black;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    &-body {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border: 1px solid $greyLight;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        &__descr {
+            width: 310px;
+            height: 160px;
+            color: $black;
+        }
+        &__img {
+            width: 200px;
+            height: 200px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            img {
+                border-radius: 5px;
+            }
+        }
+        &__link {
+            position: absolute;
+            left: 20px;
+            bottom: 20px;
+        }
+        &__btn {
+            width: 120px;
+            height: 40px;
+            background-color: $red;
+            color: $white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            cursor: pointer;
+        }
+    }
+}

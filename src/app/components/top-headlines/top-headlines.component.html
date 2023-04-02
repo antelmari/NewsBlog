@@ -1,0 +1,70 @@
+<section>
+    <div class="wrapper">
+        <nav class="nav">
+            <a routerLink="/top-headlines" class="nav__link">
+                <div class="nav__item nav__item--active">Top headlines</div>
+            </a>
+            <a routerLink="/everything" class="nav__link">
+                <div class="nav__item">Everything</div>
+            </a>
+        </nav>
+
+        <h1 class="title">Top Headlines</h1>
+        
+        <div class="selects">
+            <h2 class="selects__title">Filters:</h2>
+
+            <div class="selects-container">
+                <input type="text" class="selects__input inputCountry" readonly [value]="inputCountry" (click)="countriesList()">
+                <div class="selects-list countriesList">
+                    <div class="selects-list-values">
+                        <div class="selects-list__item" *ngFor="let item of countries; let i = index" (click)="clickOnCountry(i)">{{ item.value }}</div>
+                    </div>
+                </div>
+                <select class="selects__item" name="countrySelect">
+                    <ng-container *ngFor="let item of countries; let i = index">
+                        <option class="countryOption" *ngIf="item.selected; else withoutSelected" (click)="getCountryID(this.countries[i].id)" id="{{ item.id }}" value="{{ item.value }}" selected>{{ item.value }}</option>
+                        <ng-template #withoutSelected>
+                            <option class="countryOption" (click)="getCountryID(this.countries[i].id)" id="{{ item.id }}" value="{{ item.value }}">{{ item.value }}</option>
+                        </ng-template>
+                    </ng-container>
+                </select>
+            </div>
+
+            <div class="selects-container">
+                <input type="text" class="selects__input inputCategory" readonly [value]="inputCategory" (click)="categoriesList()">
+                <div class="selects-list categoriesList">
+                    <div class="selects-list-values">
+                        <div class="selects-list__item" *ngFor="let item of categories; let i = index" (click)="clickOnCategory(i)">{{ item.value }}</div>
+                    </div>
+                </div>
+                <select class="selects__item" name="categorySelect">
+                    <ng-container *ngFor="let item of categories; let i = index">
+                        <option class="categoryOption" *ngIf="item.selected; else withoutSelected" (click)="getCategoryID(this.categories[i].id)" id="{{ item.id }}" value="{{ item.value }}" selected>{{ item.value }}</option>
+                        <ng-template #withoutSelected>
+                            <option class="categoryOption" (click)="getCategoryID(this.categories[i].id)" id="{{ item.id }}" value="{{ item.value }}">{{ item.value }}</option>
+                        </ng-template>
+                    </ng-container>
+                </select>
+            </div>
+        </div>
+        
+        <div class="news">
+            <div class="news-item" *ngFor="let i of topHeadlinesData | paginate: { itemsPerPage: 6, currentPage: p }">
+                <div class="news-header">
+                    <h3 class="news-header__title">{{ i.title }}</h3>
+                </div>
+                <div class="news-body">
+                    <div class="news-body__descr">{{ i.description }}</div>
+                    <div class="news-body__img">
+                        <img src="{{ i.urlToImage }}" alt="">
+                    </div>
+                    <a href="{{ i.url }}" target="_blank" class="news-body__link"><button class="news-body__btn">Read more</button></a>
+                </div>
+            </div>
+        </div>
+    
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        
+    </div>
+</section>

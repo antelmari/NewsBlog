@@ -1,0 +1,86 @@
+.ngx-pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .current {
+        background-color: $red !important;
+    }
+    li {
+        width: 35px;
+        height: 35px;
+        border-radius: 100% !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        a {
+            color: $red;
+            &:hover {
+                background-color: $white;
+            }
+        }
+    }
+    .small-screen {
+        display: none !important;
+    }
+    .pagination-previous, .pagination-next {
+        span {
+            display: none;
+        }
+        a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            border-radius: 100%;
+            overflow: hidden;
+            border: 1px solid $red;
+            background-color: $white;
+            color: $white;
+            cursor: pointer;
+            &:hover {
+                background-color: $white !important;
+            }
+        }
+    }
+    .pagination-previous a::before,
+    .pagination-previous.disabled::before,
+    .pagination-next::before {
+        margin-right: 0 !important;
+        font-size: 26px;
+        color: $red;
+        margin-top: -4px;
+    }
+
+    .disabled::before {
+        opacity: 0.5;
+        cursor: default !important;
+    }
+
+    .pagination-next {
+        a::before {
+            position: absolute;
+            content: '\bb';
+            display: inline-block;
+            color: $red;
+            font-size: 26px;
+            margin-top: -4px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+        &.disabled::before {
+            position: absolute;
+            content: '\bb';
+            display: inline-block;
+            color: $red;
+            font-size: 26px;
+            margin-left: 2px;
+        }
+        a::after {
+            display: none !important;
+        }
+        &.disabled::after {
+            display: none !important;
+        }
+    }
+}
